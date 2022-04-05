@@ -6,3 +6,8 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+
+# Exercises
+[[bin]]
+name = "1001"
+path = "src/bin/1001_extremely_basic/main.rs"
