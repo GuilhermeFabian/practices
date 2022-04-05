@@ -11,3 +11,7 @@ edition = "2021"
 [[bin]]
 name = "1001"
 path = "src/bin/1001_extremely_basic/main.rs"
+
+[[bin]]
+name = "1002"
+path = "src/bin/1002_area_of_a_circle/main.rs"
