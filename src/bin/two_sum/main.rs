@@ -46,13 +46,11 @@ impl Solution {
         for (index, number) in numbers.iter().enumerate() {
             difference = target - number;
 
-            if bucket.contains_key(&difference) {
-                if let Some(complementary_index) = bucket.get(&difference) {
-                    return vec![*complementary_index, index as i32];
-                }
+            if let Some(complementary_index) = bucket.get(&difference) {
+                return vec![*complementary_index, index as i32];
             }
 
-                bucket.insert(*number, index as i32);
+            bucket.insert(*number, index as i32);
         }
 
         vec![]
