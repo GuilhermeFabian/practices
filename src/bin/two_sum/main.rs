@@ -1,6 +1,5 @@
 use std::{io::stdin, collections::HashMap};
 
-
 #[derive(Default)]
 struct Scanner {
     buffer: Vec<String>,
@@ -16,6 +15,22 @@ impl Scanner {
             let mut input = String::new();
             stdin().read_line(&mut input).expect("Failed read");
             self.buffer = input.split_whitespace().rev().map(String::from).collect();
+        }
+    }
+
+    fn try_next<T: std::str::FromStr>(&mut self) -> Option<T> {
+        loop {
+            if let Some(token) = self.buffer.pop() {
+                return token.parse().ok();
+            }
+
+            let mut input = String::new();
+            stdin().read_line(&mut input).expect("Failed read");
+            self.buffer = input.split_whitespace().rev().map(String::from).collect();
+
+            if self.buffer.len() == 0 {
+                break None;
+            }
         }
     }
 }
@@ -50,13 +65,13 @@ fn main() {
     let target = scan.next::<i32>();
     let mut numbers: Vec<i32> = vec![];
 
-    loop {
-        if let number = scan.next::<i32>() {
-            numbers.push(number);
-        } else {
-            break;
-        }
+    while let Some(number) = scan.try_next::<i32>() {
+        numbers.push(number);
     }
+
+    let ans = Solution::two_sum(numbers, target);
+
+    println!("[{}, {}]", ans[0], ans[1]);
 }
 
 #[cfg(test)]
