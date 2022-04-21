@@ -19,3 +19,7 @@ path = "src/bin/1002_area_of_a_circle/main.rs"
 [[bin]]
 name = "two_sum"
 path = "src/bin/two_sum/main.rs"
+
+[[bin]]
+name = "1071"
+path = "src/bin/1071_sum_of_consecutive_odd_numbers/main.rs"
