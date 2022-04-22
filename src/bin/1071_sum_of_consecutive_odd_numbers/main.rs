@@ -80,5 +80,263 @@ fn main() {
 
 #[cfg(test)]
 mod tests {
+    use super::Solution;
 
+    #[test]
+    fn it_should_match_all_judge_output_samples() {
+        let mut x = 6;
+        let mut y = -5;
+
+        let mut expected = 5;
+        let mut received = Solution::sum_consecutive_odd_numbers_between(&x, &y);
+
+        assert_eq!(received, expected);
+
+        x = 15;
+        y = 12;
+
+        expected = 13;
+        received = Solution::sum_consecutive_odd_numbers_between(&x, &y);
+
+        assert_eq!(received, expected);
+
+        x = 12;
+        y = 12;
+
+        expected = 0;
+        received = Solution::sum_consecutive_odd_numbers_between(&x, &y);
+
+        assert_eq!(received, expected);
+
+        x = 13;
+        y = 15;
+
+        expected = 0;
+        received = Solution::sum_consecutive_odd_numbers_between(&x, &y);
+
+        assert_eq!(received, expected);
+
+        x = 14;
+        y = 16;
+
+        expected = 15;
+        received = Solution::sum_consecutive_odd_numbers_between(&x, &y);
+
+        assert_eq!(received, expected);
+    }
+
+    #[test]
+    fn it_should_return_the_next_odd_number() {
+        let mut x = 3;
+
+        let mut expected = 5;
+        let mut received = Solution::get_next_odd_number(&x);
+
+        assert_eq!(received, expected);
+
+        x = 4;
+
+        expected = 5;
+        received = Solution::get_next_odd_number(&x);
+
+        assert_eq!(received, expected);
+
+        x = 0;
+
+        expected = 1;
+        received = Solution::get_next_odd_number(&x);
+
+        assert_eq!(received, expected);
+
+        x = -1;
+
+        expected = 1;
+        received = Solution::get_next_odd_number(&x);
+
+        assert_eq!(received, expected);
+
+        x = -3;
+
+        expected = -1;
+        received = Solution::get_next_odd_number(&x);
+
+        assert_eq!(received, expected);
+    }
+
+    #[test]
+    fn it_should_return_the_previous_odd_number() {
+        let mut x = 5;
+
+        let mut expected = 3;
+        let mut received = Solution::get_previous_odd_number(&x);
+
+        assert_eq!(received, expected);
+
+        x = 4;
+
+        expected = 3;
+        received = Solution::get_previous_odd_number(&x);
+
+        assert_eq!(received, expected);
+
+        x = 0;
+
+        expected = -1;
+        received = Solution::get_previous_odd_number(&x);
+
+        assert_eq!(received, expected);
+
+        x = 1;
+
+        expected = -1;
+        received = Solution::get_previous_odd_number(&x);
+
+        assert_eq!(received, expected);
+
+        x = -3;
+
+        expected = -5;
+        received = Solution::get_previous_odd_number(&x);
+
+        assert_eq!(received, expected);
+    }
+
+    #[test]
+    fn it_should_return_the_number_of_odd_elements_between_a_lower_bound_and_upper_bound() {
+        let mut lowest_value = 1;
+        let mut highest_value = 3;
+
+        let mut expected = 2;
+        let mut received = Solution::count_odd_numbers_between(&lowest_value, &highest_value);
+
+        assert_eq!(received, expected);
+
+        lowest_value = 1;
+        highest_value = 2;
+
+        expected = 1;
+        received = Solution::count_odd_numbers_between(&lowest_value, &highest_value);
+
+        assert_eq!(received, expected);
+
+        lowest_value = 2;
+        highest_value = 4;
+
+        expected = 1;
+        received = Solution::count_odd_numbers_between(&lowest_value, &highest_value);
+
+        assert_eq!(received, expected);
+
+        lowest_value = 0;
+        highest_value = 1;
+
+        expected = 1;
+        received = Solution::count_odd_numbers_between(&lowest_value, &highest_value);
+
+        assert_eq!(received, expected);
+
+        lowest_value = 0;
+        highest_value = 2;
+
+        expected = 1;
+        received = Solution::count_odd_numbers_between(&lowest_value, &highest_value);
+
+        assert_eq!(received, expected);
+
+        lowest_value = -1;
+        highest_value = 1;
+
+        expected = 2;
+        received = Solution::count_odd_numbers_between(&lowest_value, &highest_value);
+
+        assert_eq!(received, expected);
+
+        lowest_value = -2;
+        highest_value = 2;
+
+        expected = 2;
+        received = Solution::count_odd_numbers_between(&lowest_value, &highest_value);
+
+        assert_eq!(received, expected);
+
+        lowest_value = -1;
+        highest_value = 0;
+
+        expected = 1;
+        received = Solution::count_odd_numbers_between(&lowest_value, &highest_value);
+
+        assert_eq!(received, expected);
+
+        lowest_value = -2;
+        highest_value = 0;
+
+        expected = 1;
+        received = Solution::count_odd_numbers_between(&lowest_value, &highest_value);
+
+        assert_eq!(received, expected);
+
+        lowest_value = -3;
+        highest_value = -1;
+
+        expected = 2;
+        received = Solution::count_odd_numbers_between(&lowest_value, &highest_value);
+
+        assert_eq!(received, expected);
+
+        lowest_value = -2;
+        highest_value = -1;
+
+        expected = 1;
+        received = Solution::count_odd_numbers_between(&lowest_value, &highest_value);
+
+        assert_eq!(received, expected);
+
+        lowest_value = -4;
+        highest_value = -2;
+
+        expected = 1;
+        received = Solution::count_odd_numbers_between(&lowest_value, &highest_value);
+
+        assert_eq!(received, expected);
+
+        lowest_value = 0;
+        highest_value = 0;
+
+        expected = 0;
+        received = Solution::count_odd_numbers_between(&lowest_value, &highest_value);
+
+        assert_eq!(received, expected);
+
+        lowest_value = 1;
+        highest_value = 1;
+
+        expected = 1;
+        received = Solution::count_odd_numbers_between(&lowest_value, &highest_value);
+
+        assert_eq!(received, expected);
+
+        lowest_value = 2;
+        highest_value = 2;
+
+        expected = 0;
+        received = Solution::count_odd_numbers_between(&lowest_value, &highest_value);
+
+        assert_eq!(received, expected);
+
+        lowest_value = -1;
+        highest_value = -1;
+
+        expected = 1;
+        received = Solution::count_odd_numbers_between(&lowest_value, &highest_value);
+
+        assert_eq!(received, expected);
+
+        lowest_value = -2;
+        highest_value = -2;
+
+        expected = 0;
+        received = Solution::count_odd_numbers_between(&lowest_value, &highest_value);
+
+        assert_eq!(received, expected);
+    }
 }
